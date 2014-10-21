@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 var indexController = require('./controllers/index.js');
 
-mongoose.connect('mongodb://localhost/applicados');
+mongoose.connect('mongodb://localhost/applicados-model');
 
 var app = express();
 app.set('view engine', 'jade');
@@ -18,10 +18,13 @@ app.get('/', indexController.index);
 // displays a list of applicants
 app.get('/applicants', indexController.applicants);
 
+//gives success page
 app.get('/success', indexController.success);
 
 // creates and applicant
 app.post('/applicant', indexController.applicant);
+
+
 
 var server = app.listen(8441, function() {
 	console.log('Express server listening on port ' + server.address().port);
